@@ -1,0 +1,13 @@
+---
+applications:
+- name: customer-apiv2
+  memory: 728M
+  instances: 1
+  buildpack: java_buildpack
+  services:
+  - service-discovery
+  - config-server
+  env:
+    SPRING_PROFILES_ACTIVE: dev
+
+
