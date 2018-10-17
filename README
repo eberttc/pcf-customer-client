@@ -2,9 +2,10 @@ Sample PCF Client Application
 ==============================
 
 Before uploading your app to Pivotal Web services, You need to cofigure the following services:
--Service Registry
--Config Server
--Circuit Breaker
+- Service Registry
+- Config Server
+- Circuit Breaker
+- Redis-cloud
 
 See https://docs.pivotal.io/spring-cloud-services/1-4/common/config-server/background-information.html
 
@@ -13,7 +14,7 @@ For This Demo, I am using https://github.com/eberttc/pcf-config-repo.
 
 
 Config Server
--------------
+****************
 These are the parameters set in Config Server :
 {
 	"count": 1,
@@ -32,3 +33,4 @@ For testing , we are using a public api that is going to be invoked by our appli
 https://jsonplaceholder.typicode.com/users/1
 
 
+Also see https://pivotal.io/platform/pcf-tutorials/getting-started-with-pivotal-cloud-foundry/introduction
