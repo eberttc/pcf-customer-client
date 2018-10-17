@@ -1,7 +1,7 @@
 Sample PCF Client Application
 ==============================
 
-Before uploading your app to Pivotal Web services, You need to cofigure the following services:
+Before uploading your app to Pivotal Web services, You need to configure the following services:
 - Service Registry
 - Config Server
 - Circuit Breaker
@@ -25,6 +25,7 @@ These are the parameters set in Config Server :
 	}
 }
 
+You can replace the uri with your own repository.
 
 Circuit Breaker
 *****************
