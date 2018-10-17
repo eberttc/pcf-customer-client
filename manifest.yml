@@ -7,6 +7,7 @@ applications:
   services:
   - service-discovery
   - config-server
+  - circuit-breaker
   env:
     SPRING_PROFILES_ACTIVE: dev
 
