@@ -3,8 +3,8 @@ package com.scotia.plato.training.customerapi.controller;
 
 import com.scotia.plato.training.customerapi.client.CustomerClient;
 import com.scotia.plato.training.customerapi.domain.Customer;
-import com.scotia.plato.training.customerapi.service.CustomerRedisService;
 import com.scotia.plato.training.customerapi.service.Greeting;
+import com.scotia.plato.training.customerapi.service.RedisService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,7 +24,8 @@ public class CustomerController {
 	CustomerClient customerClient;
 
 	@Autowired
-	CustomerRedisService customerRedisService;
+	RedisService redisService;
+
 
 	@GetMapping("/hello")
 	public String sayHello(){
@@ -38,13 +39,12 @@ public class CustomerController {
 
 	@PostMapping("/redis")
 	public Customer saveCustomer(@RequestBody Customer customer){
-		return customerRedisService.createCustomer(customer);
+		return redisService.createCustomer(customer);
 	}
 
 	@GetMapping("/redis/{id}")
 	public Customer getCustomerRedis(@PathVariable(name = "id") String id){
-		return customerRedisService.getCustomer(id);
+		return redisService.getCustomer(id);
 	}
-
 
 }

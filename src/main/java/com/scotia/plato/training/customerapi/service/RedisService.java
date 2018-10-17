@@ -1,30 +1,32 @@
 package com.scotia.plato.training.customerapi.service;
 
 import com.google.gson.Gson;
-import com.scotia.plato.training.customerapi.dao.RedisClientTemplate;
 import com.scotia.plato.training.customerapi.domain.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.stereotype.Component;
 
 import java.util.UUID;
 
-@Service
-public class CustomerRedisService {
+@Component
+public class RedisService {
 
 	@Autowired
-	private RedisClientTemplate redisClientTemplate;
+	@Qualifier("redisUserTemplate")
+	private RedisTemplate<String, String> redisUserTemplate;
 
 	public Customer createCustomer(Customer customer){
 		customer.setId(UUID.randomUUID().toString());
 		Gson gson = new Gson();
 		String json = gson.toJson(customer);
-		redisClientTemplate.set(customer.getId(),json);
+		redisUserTemplate.opsForValue().set(customer.getId(),json);
 		return customer;
 	}
 
 	public Customer getCustomer(String id){
 		Gson gson = new Gson();
-		String json = redisClientTemplate.get(id);
+		String json = redisUserTemplate.opsForValue().get(id);
 		Customer object=gson.fromJson(json, Customer.class);
 		return object;
 	}
