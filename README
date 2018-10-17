@@ -1,14 +1,34 @@
 Sample PCF Client Application
 ==============================
-Properties repository
-#####################
 
-https://github.com/eberttc/pcf-config-repo
+Before uploading your app to Pivotal Web services, You need to cofigure the following services:
+-Service Registry
+-Config Server
+-Circuit Breaker
+
+See https://docs.pivotal.io/spring-cloud-services/1-4/common/config-server/background-information.html
+
+In addition a repository for properties is needed in order to configure the Config Server.
+For This Demo, I am using https://github.com/eberttc/pcf-config-repo.
 
 
+Config Server
+-------------
+These are the parameters set in Config Server :
+{
+	"count": 1,
+	"git": {
+		"searchPaths": "{application}",
+		"label": "master",
+		"uri": "https://github.com/eberttc/pcf-config-repo.git"
+	}
+}
 
-Fake API Customer
+
+Circuit Breaker
 *****************
+For testing , we are using a public api that is going to be invoked by our application.
+
 https://jsonplaceholder.typicode.com/users/1
 
 
