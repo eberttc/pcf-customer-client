@@ -9,11 +9,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
-@FeignClient(url = "https://jsonplaceholder.typicode.com", fallback = CustomerClient.CustomerFallback.class)
+@FeignClient(name = "customerClient",url = "https://jsonplaceholder.typicode.com", fallback = CustomerClient.CustomerFallback.class)
 public interface CustomerClient {
 
     @RequestMapping(method = GET, value="/users/{id}")
-    Customer getCustomer(@PathVariable String id);
+    Customer getCustomer(@PathVariable(name = "id") String id);
 
     @Component
     class CustomerFallback implements CustomerClient {

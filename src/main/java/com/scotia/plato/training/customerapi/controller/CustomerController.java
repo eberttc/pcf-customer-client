@@ -26,7 +26,7 @@ public class CustomerController {
 	}
 
 	@GetMapping("/{id}")
-	public Customer getCustomer(@PathVariable String id){
+	public Customer getCustomer(@PathVariable(name = "id") String id){
 		return customerClient.getCustomer(id);
 	}
 }
